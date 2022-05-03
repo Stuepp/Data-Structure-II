@@ -11,6 +11,9 @@ int main(){
         v[i] = rand() % 11;
         printf("%d ", v[i]);
     }
+    /*int v[] = {1,2,0};
+    int n = sizeof(v);
+    int saida;*/
     int menor = v[0];
     for(int i = 0; i < n; i++){
         if(menor > v[i] && v[i] > 0)
@@ -18,30 +21,26 @@ int main(){
     }
     printf("\nmenor = %d", menor);
     printf("\n");
-    for(int i = 0; i < n; i++){
-        if(v[i] > 0 && (menor-1) > 0){
-            if((menor - 1) == v[i]){
-                int j = 0;
-                while(((menor-j) > 0) && ((menor-j) == v[j])){
-                    j++;
-                }
-                if((menor-j) > 0){
-                    saida = menor-j;
-                    break;
-                }
-            }else if((menor+1) == v[i]){
-                int j = 0;
-                while((menor+j) == v[j]){
-                    j++;
-                }
-                saida = menor+j;
-            }else{
-                saida = menor - 1;
-                break;
-            }
+    if((menor-1) > 0){
+         printf("\nIO");
+        int j = 1;
+        while(((menor-j) > 0) && ((menor-j) == v[j])){
+            j++;
         }
+        if((menor-j) > 0){
+            saida = menor-j;
+        }
+    }else{
+        printf("\nOI");
+        int j = 1;
+        while((menor+j) == v[j]){
+            printf("teste");
+             j++;
+        }
+        printf("\nj:%i",j);
+        saida = menor+j;
     }
-    printf("saída: %d", saida);
+    printf("\nsaída: %d", saida);
 
     return 0;
 }
