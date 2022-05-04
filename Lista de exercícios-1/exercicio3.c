@@ -10,6 +10,7 @@
  * o esforço para ordenação do vetor).
  * ○ Exemplo 1, dado v = [3,4,-1,1], a saída esperada é 2
  * ○ Exemplo 2, dado v = [1,2,0], a saída esperada é 3
+ * falta descer para o menor possível exemplo  3 4 5 -> saida:  2 
 */
 
 int main(){

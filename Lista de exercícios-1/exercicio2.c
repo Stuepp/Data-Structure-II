@@ -7,6 +7,7 @@
  * exceção de i.
  * ○ Exemplo 1: dado v = [1,2,3,4,5], a saída esperada é [120,60,40,30,24]
  * ○ Exemplo 2: dado v = [3,2,1], a saída esperada é [2,3,6]
+ * ok
  */
 int main(){
     srand(time(NULL));
