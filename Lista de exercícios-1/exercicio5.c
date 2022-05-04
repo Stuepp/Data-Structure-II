@@ -7,7 +7,7 @@
 */
 
 int main(){
-    int n=4;
+    int n=6;
 
     for(int i = 0; i < n; i++){
         printf("1 ");
@@ -30,6 +30,30 @@ int main(){
         for(int i = 0; i < n/2; i++){
            printf("2 ");
         }        
+    }
+    printf("\n");
+    int intercalado = 1;
+    for(int i = 0; i < n; i++){
+        if(intercalado == 1){
+            printf("2 ");
+            i++;
+            intercalado = 0;
+        }else{
+            printf("1 ");
+            intercalado = 1;
+        }
+    }
+    printf("\n");
+    intercalado = 0;
+    for(int i = 0; i < n; i++){
+        if(intercalado == 1){
+            printf("2 ");
+            i++;
+            intercalado = 0;
+        }else{
+            printf("1 ");
+            intercalado = 1;
+        }
     }
 
     return 0;
