@@ -18,7 +18,8 @@ int pesquisaInterpolacao(int chave, int v[], int n){
 int main()
 {
     int v[] = {10,20,30,40,50,60,70,80};
-    printf("\níndice de 70: %d", pesquisaInterpolacao(70, v, 8));
+    printf("\nPesquisa por Interpolação: índice de 70: %d", pesquisaInterpolacao(70, v, 8));
+    printf("\nPesquisa por Interpolação: índice de 90: %d", pesquisaInterpolacao(90, v, 8));
 
     return 0;
 }
