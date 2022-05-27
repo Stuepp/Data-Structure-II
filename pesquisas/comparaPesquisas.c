@@ -104,7 +104,7 @@ int main()
     for(int j = 0; j < SIZE; j++){
         tempV[j] = v[0][j];
     }
-    pesquisaInterpolacao(keys[0], tempV, SIZE, ncomparacao);
+    pesquisaInterpolacao(keys[0], tempV, SIZE, ncomparacao); // a aleatoridade faz com que as vezes funcione e as vezes não
     comparacoes[0] = *ncomparacao;
     printf("%d ", comparacoes[0]);
 
