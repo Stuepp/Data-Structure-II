@@ -101,14 +101,12 @@ int main()
     int comparacao, comparacoes[SIZE];
     int* ncomparacao = &comparacao;
     int tempV[SIZE];
-    for(int i = 0; i < SIZE; i++){
-        for(int j = 0; j < SIZE; j++){
-            tempV[j] = v[i][j];
-        }
-        pesquisaInterpolacao(keys[i], tempV, SIZE, ncomparacao);
-        comparacoes[i] = *ncomparacao;
-        printf("%d ", comparacoes[i]);
+    for(int j = 0; j < SIZE; j++){
+        tempV[j] = v[0][j];
     }
+    pesquisaInterpolacao(keys[0], tempV, SIZE, ncomparacao);
+    comparacoes[0] = *ncomparacao;
+    printf("%d ", comparacoes[0]);
 
     return 0;
 }
