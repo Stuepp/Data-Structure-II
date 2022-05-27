@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+#define SIZE 10
+
 int compara(const void * a, const void * b){
     return ( *(int*)a - *(int*)b );
 }
@@ -74,40 +76,42 @@ int main()
     srand(time(0)); // Use current time as seed for random generator
 
     // vetores
-    int v[10][10];;
-    for(int i = 0; i < 10; i++){
-        for(int j = 0; j < 10; j++){
+    int v[SIZE][SIZE];
+    for(int i = 0; i < SIZE; i++){
+        for(int j = 0; j < SIZE; j++){
             v[i][j] = rand();
         }
-        qsort(v, 10, sizeof(int), compara);
-        for(int j = 0; j < 10; j++){
+        qsort(v, SIZE, sizeof(int), compara);
+        for(int j = 0; j < SIZE; j++){
             printf("%d ", v[i][j]);
         }
         printf("\n");
     }
     printf("\n");
     // chaves
-    int keys[10];
-    int lower = 0, upper = 9;
-    for(int i = 0; i < 10; i++){
+    int keys[SIZE];
+    int lower = 0, upper = SIZE-1;
+    for(int i = 0; i < SIZE; i++){
         int vnum = (rand() % (upper - lower + 1)) + lower;
         keys[i] = v[i][vnum];
         printf("%d\n", keys[i]);
     }
-    printf("\n");
+    printf("\n comparações\n");
     // comparações
-    int comparacoes;
-    int* ncomparacoes = &comparacoes;
-    for(int i = 0; i < 10; i++){
-        pesquisaInterpolacao();
-        pesquisaSequencial();
-        pesquisaSequencialSentinela();
-        pesquisaBinaria();
+    int comparacao, comparacoes[SIZE];
+    int* ncomparacao = &comparacao;
+    int tempV[SIZE];
+    for(int i = 0; i < SIZE; i++){
+        for(int j = 0; j < SIZE; j++){
+            tempV[j] = v[i][j];
+        }
+        pesquisaInterpolacao(keys[i], tempV, SIZE, ncomparacao);
+        comparacoes[i] = *ncomparacao;
+        printf("%d ", comparacoes[i]);
     }
 
     return 0;
 }
-
 /*
     // 70 existe, 90 não existe
     pesquisaInterpolacao(70, v, 8, ncomparacoes);
