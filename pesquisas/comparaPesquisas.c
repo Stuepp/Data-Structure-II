@@ -31,10 +31,10 @@ int pesquisaInterpolacao(int chave, int v[], int n, int* comparacoes){
 int pesquisaSequencial(int chave, int v[], int n, int* comparacoes){ 
     *comparacoes = 0;
     for(int i = 0; i < n-1; i++){
+        *comparacoes += 1;
         if(v[i] == chave){
             return i;
         }
-        *comparacoes += 1;
     }
     return -1;
 }
@@ -98,18 +98,32 @@ int main()
     }
     printf("\n comparações\n");
     // comparações
-    int comparacao, comparacoes[SIZE];
+    int comparacao, comparacoesMedias[3] = {0,0,0}; // número de tipos de pesquisas
     int* ncomparacao = &comparacao;
     int tempV[SIZE];
     for(int j = 0; j < SIZE; j++){
         tempV[j] = v[0][j];
     }
-    pesquisaInterpolacao(keys[0], tempV, SIZE, ncomparacao); // a aleatoridade faz com que as vezes funcione e as vezes não
-    comparacoes[0] = *ncomparacao;
-    printf("%d ", comparacoes[0]);
+    for(int i = 0; i < SIZE; i++){
+        pesquisaSequencial(keys[i], tempV, SIZE, ncomparacao); 
+        comparacoesMedias[0] += *ncomparacao;
+        printf("\n sequencial %d", comparacoesMedias[0]); // não tá funfando, dando números estranhos
+        pesquisaSequencialSentinela(keys[i], tempV, SIZE, ncomparacao); 
+        comparacoesMedias[1] += *ncomparacao;
+        printf("\n sentinela %d", comparacoesMedias[1]);
+        pesquisaBinaria(keys[i], tempV, SIZE, ncomparacao); 
+        comparacoesMedias[2] += *ncomparacao;
+        printf("\n binaria %d", comparacoesMedias[2]);
+    }
+    comparacoesMedias[0] = comparacoesMedias[0] / SIZE;
+    comparacoesMedias[1] = comparacoesMedias[1] / SIZE;
+    comparacoesMedias[2] = comparacoesMedias[2] / SIZE;
+    printf("\nmedia sequencial: %d media sequencial sentinela: %d media binária: %d ", comparacoesMedias[0], comparacoesMedias[1], comparacoesMedias[2]);
 
     return 0;
 }
+
+// para interpolacao a aleatoridade faz com que as vezes funcione e as vezes não
 /*
     // 70 existe, 90 não existe
     pesquisaInterpolacao(70, v, 8, ncomparacoes);
