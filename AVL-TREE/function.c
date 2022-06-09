@@ -78,3 +78,14 @@ node* double_right_rotation(node* cell){
     cell->left = simple_left_rotation(cell->left);
     return simple_right_rotation(cell);
 }
+
+void show_tree(node* cell){ // a fazer...
+    if(cell != NULL){
+        printf("\n%d", cell->vertice);
+        printf("\n%d", cell->left->vertice);
+        printf("\n%d", cell->right->vertice);
+
+    }else{
+        printf("\nEmpty TREE! or end of tree");
+    }
+}
