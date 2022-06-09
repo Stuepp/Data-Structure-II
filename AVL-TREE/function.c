@@ -4,11 +4,16 @@
 node* ordered_insert(node* tree,node* cell, int vertice){
     if(tree != NULL){
         if(vertice < tree->vertice){
-            tree = insert(tree->left, cell, vertice);
+            tree->left = insert(tree->left, cell, vertice);
         }
         if(vertice > tree->vertice){
-            tree = insert(tree->right, cell, vertice);
+            tree->right = insert(tree->right, cell, vertice);
         }
+    }else{
+        cell->father = NULL;
+        cell->left = NULL;
+        cell->right = NULL;
+        return cell;
     }
 }
 
