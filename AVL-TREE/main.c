@@ -11,13 +11,10 @@ int main(){
     // nó 6 do exercício anterior.
     
     int array[SIZE] = {4, 2, 8, 1, 3, 6, 9, 5, 7};
-    no* tree;
-    tree->root = NULL;
 
     for(int i = 0; i < SIZE; i++){
         node* cell;
-        cell->vertice = array[i];
-        tree = ordered_incert(tree, cell);
+        cell = ordered_incert(cell, array[i]);
     }
 
     return 0;

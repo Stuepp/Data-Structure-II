@@ -1,21 +1,30 @@
 #include <stdio.h>
 #include "tree.h"
 
-node* ordered_insert(node* tree,node* cell){
-    cell->left = NULL;
-    cell->right = NULL;
-    if(tree != NULL){
-        if(cell->vertice < tree->vertice){
-            tree->left = insert(tree->left, cell);
+node* ordered_insert(node* tree, int value){ // verficar
+    node* newCell;
+    newCell->vertice = value;
+    newCell->left = NULL;
+    newCell->right = NULL;
+    if(tree == NULL){
+        newCell->father = tree;
+        return newCell;
+    }
+    if(value < tree->vertice){
+        if(tree->left == NULL){
+            tree->left = newCell;
+            newCell->father = tree;
+            return tree;
         }
-        if(cell->vertice > tree->vertice){
-            tree->right = insert(tree->right, cell);
+        return ordered_insert(tree->left, value);
+    }
+    if(value > tree->vertice){
+        if(tree->right == NULL){
+            tree->right = newCell;
+            newCell->father = tree;
+            return tree;
         }
-    }else{
-        cell->father = NULL;
-        cell->left = NULL;
-        cell->right = NULL;
-        return cell;
+        return ordered_insert(tree->right, value);
     }
 }
 

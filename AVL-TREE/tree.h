@@ -9,12 +9,7 @@ struct cell{
     node* right;
 };
 
-typedef struct tree;
-struct tree{
-    struct node* root;
-} Tree;
-
-node* ordered_insert(node* tree,node* cell, int vertice);
+node* ordered_insert(node* tree, int value);
 int height(node* cell);  // returns the height of the tree
 int balanced_factor(node* cell);  // returns the diff between left and right so we can get where it's "weight" is going
 node* simple_left_rotation(node* cell);
