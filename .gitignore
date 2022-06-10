@@ -1,12 +1,3 @@
-Lista de exercícios-1/exercicio1.exe
-Lista de exercícios-1/exercicio2.exe
-Lista de exercícios-1/exercicio3.exe
-Lista de exercícios-1/exercicio4.exe
-Lista de exercícios-1/exercicio5.exe
-Lista de exercícios-1/exercicio6.exe
-Lista de exercícios-1/exercicio7.exe
-Lista de exercícios-1/exercicio8.exe
-Lista de exercícios-1/exercicio9.exe
-Lista de exercícios-1/exercicio10.exe
-04 - Revisão da linguagem C.pdf
-pesquisas/comparaPesquisas.exe
+*.pdf
+*.exe
+*.o

@@ -14,7 +14,7 @@ int main(){
 
     for(int i = 0; i < SIZE; i++){
         node* cell;
-        cell = ordered_incert(cell, array[i]);
+        cell = ordered_insert(cell, array[i]);
     }
 
     return 0;
