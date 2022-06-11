@@ -92,10 +92,19 @@ node* double_right_rotation(node* cell){
     return simple_right_rotation(cell);
 }
 
-void show_tree(node* cell){ // 
+void show_tree(node* cell){ // pre-order?
     if(cell != NULL){
         printf("\n%d", cell->vertice);
         show_tree(cell->left);
         show_tree(cell->right);
+    }
+}
+
+void remove(node* cell, int vertice){ // não vai ser tão simples quanto pensei
+    if(cell != NULL){
+        if(cell->vertice == vertice){
+
+        }
+        if(vertice < )
     }
 }
