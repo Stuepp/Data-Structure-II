@@ -11,11 +11,12 @@ int main(){
     // nó 6 do exercício anterior.
     
     int array[SIZE] = {4, 2, 8, 1, 3, 6, 9, 5, 7};
-
+    node* tree = NULL;
     for(int i = 0; i < SIZE; i++){
-        node* cell;
-        cell = ordered_insert(cell, array[i]);
+        tree = ordered_insert(tree, array[i]);
     }
+    //printf("%d", tree->vertice);
+    show_tree(tree);
 
     return 0;
 }

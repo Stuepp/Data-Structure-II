@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include "tree.h"
 
-node* ordered_insert(node* tree, int value){ // verficar
-    node* newCell;
+node* ordered_insert(node* tree, int value){ // funfando....
+    node* newCell = malloc(sizeof(node));
     newCell->vertice = value;
     newCell->left = NULL;
     newCell->right = NULL;
@@ -16,7 +16,8 @@ node* ordered_insert(node* tree, int value){ // verficar
             newCell->father = tree;
             return tree;
         }
-        return ordered_insert(tree->left, value);
+        tree->left = ordered_insert(tree->left, value);
+        return tree;
     }
     if(value > tree->vertice){
         if(tree->right == NULL){
@@ -24,7 +25,8 @@ node* ordered_insert(node* tree, int value){ // verficar
             newCell->father = tree;
             return tree;
         }
-        return ordered_insert(tree->right, value);
+        tree->right = ordered_insert(tree->right, value);
+        return tree;
     }
 }
 
@@ -90,13 +92,10 @@ node* double_right_rotation(node* cell){
     return simple_right_rotation(cell);
 }
 
-void show_tree(node* cell){ // a fazer...
+void show_tree(node* cell){ // 
     if(cell != NULL){
         printf("\n%d", cell->vertice);
-        printf("\n%d", cell->left->vertice);
-        printf("\n%d", cell->right->vertice);
-
-    }else{
-        printf("\nEmpty TREE! or end of tree");
+        show_tree(cell->left);
+        show_tree(cell->right);
     }
 }
