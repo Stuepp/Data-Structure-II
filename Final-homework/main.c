@@ -3,7 +3,7 @@
 
 
 int main() {
-    arvoreRubroNegra* a = criar();
+    ArvoreRubroNegra* a = criar();
 
     adicionar(a,7);
     adicionar(a,6);
@@ -15,5 +15,9 @@ int main() {
 
     printf("In-order: ");
     percorrerProfundidadeInOrder(a, a->raiz,visitar);
+    printf("\nPre-order:");
+    percorrerProfundidadePreOrder(a, a->raiz, visitar);
+    printf("\nPos-order:");
+    percorrerProfundidadePosOrder(a, a->raiz, visitar);
     printf("\n");
 }

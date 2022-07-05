@@ -1,5 +1,8 @@
-arvoreRubroNegra* criar() {
-    arvoreRubroNegra *arvore = malloc(sizeof(arvoreRubroNegra));
+#include <stdio.h>
+#include "trees.h"
+
+ArvoreRubroNegra* criar() {
+    ArvoreRubroNegra *arvore = malloc(sizeof(ArvoreRubroNegra));
     arvore->nulo = NULL;
     arvore->raiz = NULL;
 
@@ -9,12 +12,12 @@ arvoreRubroNegra* criar() {
     return arvore;
 }
 
-int vazia(arvoreRubroNegra* arvore) {
+int vazia(ArvoreRubroNegra* arvore) {
     return arvore->raiz == NULL;
 }
 
-noRubroNegra* criarNo(arvoreRubroNegra* arvore, noRubroNegra* pai, int valor) {
-    noRubroNegra* no = malloc(sizeof(noRubroNegra));
+NoRubroNegra* criarNo(ArvoreRubroNegra* arvore, NoRubroNegra* pai, int valor) {
+    NoRubroNegra* no = malloc(sizeof(NoRubroNegra));
 
     no->pai = pai;    
     no->valor = valor;
@@ -24,7 +27,7 @@ noRubroNegra* criarNo(arvoreRubroNegra* arvore, noRubroNegra* pai, int valor) {
     return no;
 }
 
-noRubroNegra* adicionarNo(arvoreRubroNegra* arvore, noRubroNegra* no, int valor) {
+NoRubroNegra* adicionarNo(ArvoreRubroNegra* arvore, NoRubroNegra* no, int valor) {
     if (valor > no->valor) {
         if (no->direita == arvore->nulo) {
             no->direita = criarNo(arvore, no, valor);     
@@ -46,23 +49,23 @@ noRubroNegra* adicionarNo(arvoreRubroNegra* arvore, noRubroNegra* no, int valor)
     }
 }
 
-noRubroNegra* adicionar(arvoreRubroNegra* arvore, int valor) {
+NoRubroNegra* adicionar(ArvoreRubroNegra* arvore, int valor) {
     if (vazia(arvore)) {
         arvore->raiz = criarNo(arvore, arvore->nulo, valor);
         arvore->raiz->cor = Preto;
         	
         return arvore->raiz;
     } else {
-        noRubroNegra* no = adicionarNo(arvore, arvore->raiz, valor);
+        NoRubroNegra* no = adicionarNo(arvore, arvore->raiz, valor);
         balancear(arvore, no);
         
         return no;
     }
 }
 
-noRubroNegrao* localizar(arvoreRubroNegra* arvore, int valor) {
+NoRubroNegra* localizar(ArvoreRubroNegra* arvore, int valor) {
     if (!vazia(arvore)) {
-        noRubroNegra* no = arvore->raiz;
+        NoRubroNegra* no = arvore->raiz;
 
         while (no != arvore->nulo) {
             if (no->valor == valor) {
@@ -76,7 +79,7 @@ noRubroNegrao* localizar(arvoreRubroNegra* arvore, int valor) {
     return NULL;
 }
 
-void percorrerProfundidadeInOrder(arvoreRubroNegra* arvore, noRubroNegrao* no, void (*callback)(int)) {
+void percorrerProfundidadeInOrder(ArvoreRubroNegra* arvore, NoRubroNegra* no, void (*callback)(int)) {
     if (no != arvore->nulo) {
         percorrerProfundidadeInOrder(arvore, no->esquerda,callback);
         callback(no->valor);
@@ -84,7 +87,7 @@ void percorrerProfundidadeInOrder(arvoreRubroNegra* arvore, noRubroNegrao* no, v
     }
 }
 
-void percorrerProfundidadePreOrder(arvoreRubroNegra* arvore, noRubroNegrao* no, void (*callback)(int)) {
+void percorrerProfundidadePreOrder(ArvoreRubroNegra* arvore, NoRubroNegra* no, void (*callback)(int)) {
     if (no != arvore->nulo) {
         callback(no->valor);
         percorrerProfundidadePreOrder(arvore, no->esquerda,callback);
@@ -92,7 +95,7 @@ void percorrerProfundidadePreOrder(arvoreRubroNegra* arvore, noRubroNegrao* no, 
     }
 }
 
-void percorrerProfundidadePosOrder(arvoreRubroNegra* arvore, noRubroNegrao* no, void (callback)(int)) {
+void percorrerProfundidadePosOrder(ArvoreRubroNegra* arvore, NoRubroNegra* no, void (callback)(int)) {
     if (no != arvore->nulo) {
         percorrerProfundidadePosOrder(arvore, no->esquerda,callback);
         percorrerProfundidadePosOrder(arvore, no->direita,callback);
@@ -104,10 +107,10 @@ void visitar(int valor){ // desenvolver
     printf("%d ", valor);
 }
 
-void balancear(arvoreRubroNegra* arvore, noRubroNegrao* no) {
+void balancear(ArvoreRubroNegra* arvore, NoRubroNegra* no) {
     while (no->pai->cor == Vermelho) {
         if (no->pai == no->pai->pai->esquerda) {
-            noRubroNegrao *tio = no->pai->pai->direita;
+            NoRubroNegra *tio = no->pai->pai->direita;
             
             if (tio->cor == Vermelho) {
                 tio->cor = Preto; //Caso 1
@@ -126,7 +129,7 @@ void balancear(arvoreRubroNegra* arvore, noRubroNegrao* no) {
                 }
             }
         } else {
-            noRubroNegrao *tio = no->pai->pai->esquerda;
+            NoRubroNegra *tio = no->pai->pai->esquerda;
             
             if (tio->cor == Vermelho) {
                 tio->cor = Preto; //Caso 1
@@ -149,8 +152,8 @@ void balancear(arvoreRubroNegra* arvore, noRubroNegrao* no) {
     arvore->raiz->cor = Preto; //Conserta possível quebra regra 2
 }
 
-void rotacionarEsquerda(arvoreRubroNegra* arvore, noRubroNegrao* no) {
-    noRubroNegrao* direita = no->direita;
+void rotacionarEsquerda(ArvoreRubroNegra* arvore, NoRubroNegra* no) {
+    NoRubroNegra* direita = no->direita;
     no->direita = direita->esquerda; 
 
     if (direita->esquerda != arvore->nulo) {
@@ -171,8 +174,8 @@ void rotacionarEsquerda(arvoreRubroNegra* arvore, noRubroNegrao* no) {
     no->pai = direita;
 }
 
-void rotacionarDireita(arvoreRubroNegra* arvore, noRubroNegrao* no) {
-    noRubroNegrao* esquerda = no->esquerda;
+void rotacionarDireita(ArvoreRubroNegra* arvore, NoRubroNegra* no) {
+    NoRubroNegra* esquerda = no->esquerda;
     no->esquerda = esquerda->direita;
     
     if (esquerda->direita != arvore->nulo) {

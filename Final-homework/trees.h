@@ -10,18 +10,22 @@ typedef struct noRubroNegra {
     struct noRubroNegra* direita;
     Cor cor;
     int valor;
-} noRubroNegra;
+} NoRubroNegra;
 
 typedef struct arvoreRubroNegra {
     struct noRubroNegra* raiz;
     struct noRubroNegra* nulo; 
-} arvoreRubroNegra;
+} ArvoreRubroNegra;
 
-noRubroNegra* criarNoRubroNegra(arvoreRubroNegra*, noRubroNegra*, int);
-void balancear(arvoreRubroNegra*, noRubroNegra*);
-void rotacionarEsquerda(arvoreRubroNegra*, noRubroNegra*);
-void rotacionarDireita(arvoreRubroNegra*, noRubroNegra*);
-arvoreRubroNegra* criar();
-int vazia(arvoreRubroNegra*);
-noRubroNegra* adicionar(arvoreRubroNegra*, int);
-noRubroNegra* localizar(arvoreRubroNegra* arvore, int valor);
+NoRubroNegra* criarNo(ArvoreRubroNegra*, NoRubroNegra*, int);
+void balancear(ArvoreRubroNegra*, NoRubroNegra*);
+void rotacionarEsquerda(ArvoreRubroNegra*, NoRubroNegra*);
+void rotacionarDireita(ArvoreRubroNegra*, NoRubroNegra*);
+ArvoreRubroNegra* criar();
+int vazia(ArvoreRubroNegra*);
+NoRubroNegra* adicionar(ArvoreRubroNegra*, int);
+NoRubroNegra* localizar(ArvoreRubroNegra* arvore, int valor);
+void percorrerProfundidadeInOrder(ArvoreRubroNegra* arvore, NoRubroNegra* no, void (*callback)(int));
+void percorrerProfundidadePreOrder(ArvoreRubroNegra* arvore, NoRubroNegra* no, void (*callback)(int));
+void percorrerProfundidadePosOrder(ArvoreRubroNegra* arvore, NoRubroNegra* no, void (callback)(int));
+void visitar(int valor);
