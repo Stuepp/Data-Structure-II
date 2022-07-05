@@ -78,8 +78,6 @@ noRubroNegrao* localizar(arvoreRubroNegra* arvore, int valor) {
 
 void percorrerProfundidadeInOrder(arvoreRubroNegra* arvore, noRubroNegrao* no, void (*callback)(int)) {
     if (no != arvore->nulo) {
-        
-        
         percorrerProfundidadeInOrder(arvore, no->esquerda,callback);
         callback(no->valor);
         percorrerProfundidadeInOrder(arvore, no->direita,callback);
