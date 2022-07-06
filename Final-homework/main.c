@@ -3,6 +3,8 @@
 
 
 int main() {
+    // Rubro negra
+    printf("Rubro negra:\n");
     ArvoreRubroNegra* a = criar();
 
     adicionar(a,7);
@@ -20,4 +22,22 @@ int main() {
     printf("\nPos-order:");
     percorrerProfundidadePosOrder(a, a->raiz, visitar);
     printf("\n");
+
+    // ALV
+    printf("AVL:\n");
+    ArvoreAVL* b = criarAVL();
+
+    for (int i = 1; i <= 7; i++) {
+        AVLadicionar(b,i);  
+    }
+
+    printf("In-order: ");
+    AVLpercorrerProfundidadeInOrder(b->raiz,visitarAVL);
+    printf("\n");
+
+    // B
+
+
+    //
+    return 0;
 }

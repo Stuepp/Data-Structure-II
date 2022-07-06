@@ -1,3 +1,5 @@
 *.pdf
 *.exe
 *.o
+.h.gch
+Final-homework/trees.h.gch
