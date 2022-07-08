@@ -19,6 +19,8 @@ NoAVL* adicionarNoAVL(NoAVL* no, int valor) {
             NoAVL* novo = malloc(sizeof(NoAVL));
             novo->valor = valor;
             novo->pai = no;
+            novo->esquerda = NULL;
+            novo->direita = NULL;
 
             no->direita = novo;
 				
@@ -32,6 +34,8 @@ NoAVL* adicionarNoAVL(NoAVL* no, int valor) {
             NoAVL* novo = malloc(sizeof(NoAVL));
 			novo->valor = valor;
             novo->pai = no;
+            novo->esquerda = NULL;
+            novo->direita = NULL;
 			
             no->esquerda = novo;
 			
@@ -47,6 +51,8 @@ NoAVL* AVLadicionar(ArvoreAVL* arvore, int valor) {
         printf("Adicionando %d\n",valor);
         NoAVL* novo = malloc(sizeof(NoAVL));
         novo->valor = valor;
+        novo->esquerda = NULL;
+        novo->direita = NULL;
         
         arvore->raiz = novo;
 			
