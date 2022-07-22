@@ -28,13 +28,15 @@ int main() {
     ArvoreAVL* b = criarAVL();
 
     for (int i = 1; i <= 7; i++) {
-        AVLadicionar(b,i);  
+        AVLadicionar(b,i);
     }
 
     printf("In-order: ");
     AVLpercorrerProfundidadeInOrder(b->raiz,visitarAVL);
-    printf("\n");
-
+    printf("\nPre-order:");
+    AVLpercorrerProfundidadePreOrder(b->raiz,visitarAVL);
+    printf("\nPos-order:");
+    AVLpercorrerProfundidadePosOrder(b->raiz,visitarAVL);
     // B
 
 
