@@ -29,13 +29,13 @@ typedef struct arvoreAVL {
 } ArvoreAVL;
 
 //Rubro-negra
-NoRubroNegra* criarNo(ArvoreRubroNegra*, NoRubroNegra*, int);
-void balancear(ArvoreRubroNegra*, NoRubroNegra*);
-void rotacionarEsquerda(ArvoreRubroNegra*, NoRubroNegra*);
-void rotacionarDireita(ArvoreRubroNegra*, NoRubroNegra*);
-ArvoreRubroNegra* criar();
+NoRubroNegra* criarNo(ArvoreRubroNegra*, NoRubroNegra*, int valor, int* contador);
+void balancear(ArvoreRubroNegra*, NoRubroNegra*, int* contador);
+void rotacionarEsquerda(ArvoreRubroNegra*, NoRubroNegra*, int* contador);
+void rotacionarDireita(ArvoreRubroNegra*, NoRubroNegra*, int* contador);
+ArvoreRubroNegra* criar(int* contador);
 int vazia(ArvoreRubroNegra*);
-NoRubroNegra* adicionar(ArvoreRubroNegra*, int);
+NoRubroNegra* adicionar(ArvoreRubroNegra*, int valor, int* contador);
 NoRubroNegra* localizar(ArvoreRubroNegra* arvore, int valor);
 void percorrerProfundidadeInOrder(ArvoreRubroNegra* arvore, NoRubroNegra* no, void (*callback)(int));
 void percorrerProfundidadePreOrder(ArvoreRubroNegra* arvore, NoRubroNegra* no, void (*callback)(int));
@@ -43,15 +43,16 @@ void percorrerProfundidadePosOrder(ArvoreRubroNegra* arvore, NoRubroNegra* no, v
 void visitar(int valor);
 //AVL
 ArvoreAVL* criarAVL();
-NoAVL* AVLadicionar(ArvoreAVL* arvore, int valor);
-void balanceamento(ArvoreAVL*, NoAVL* no);
+NoAVL* AVLadicionar(ArvoreAVL* arvore, int valor, int* contador);
+void balanceamento(ArvoreAVL*, NoAVL* no, int* contador);
 int altura(NoAVL* no);
-int fb(NoAVL* no);
-NoAVL* rsd(ArvoreAVL*, NoAVL* no);
-NoAVL* rse(ArvoreAVL*, NoAVL* no);
-NoAVL* rdd(ArvoreAVL*, NoAVL* no);
-NoAVL* rde(ArvoreAVL*, NoAVL* no);
+int fb(NoAVL* no, int*contador);
+NoAVL* rsd(ArvoreAVL*, NoAVL* no, int* contador);
+NoAVL* rse(ArvoreAVL*, NoAVL* no, int* contador);
+NoAVL* rdd(ArvoreAVL*, NoAVL* no, int* contador);
+NoAVL* rde(ArvoreAVL*, NoAVL* no, int* contador);
 void AVLpercorrerProfundidadeInOrder(NoAVL* no, void (*callback)(int));
 void AVLpercorrerProfundidadePreOrder(NoAVL* no, void (*callback)(int));
 void AVLpercorrerProfundidadePosOrder(NoAVL* no, void (callback)(int));
 void visitarAVL(int valor);
+int vaziaAVL(ArvoreAVL* arvore);
